@@ -22,10 +22,6 @@ class MyConfig(Config):
 config = MyConfig(defaultConfig.plugins_config.get("GroupManagement", {}))
 
 
-# 特别坑的两点（在PigBotFramework<=5.0.10中）：
-# - 位于pbf.utils.Register包中的ownerPermission实际上指的是群主权限，而不是机器人主人权限
-# - pbf.config没有为机器人主人的设置预留位置
-# 综上所述，PBF作者就是个**（
 def checkBanwords(event: Event):
     if not pluginsManager.hasApi("banwords"):
         Msg("本插件需要Banwords前置插件！", event=event).send()
